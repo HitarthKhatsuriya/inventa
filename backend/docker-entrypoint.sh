@@ -32,6 +32,6 @@ php artisan db:seed --force 2>/dev/null || true
 php artisan config:cache
 php artisan route:cache
 
-echo "✅ MEDIQ Backend ready!"
+echo "âœ… MEDIQ Backend ready!"
 
 exec "$@"
