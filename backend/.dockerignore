@@ -1,0 +1,11 @@
+node_modules
+vendor
+.git
+.env
+.env.local
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+tests
+.github

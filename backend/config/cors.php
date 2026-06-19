@@ -16,9 +16,12 @@ return [
         'http://localhost:5173',
         'http://localhost:5174',
         'http://127.0.0.1:5173',
+        'https://mediq5v1.netlify.app',
     ],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => [
+        '#^https://.*\.netlify\.app$#',
+    ],
 
     'allowed_headers' => ['*'],
 
