@@ -1,0 +1,36 @@
+# ─── MEDIQ Netlify Configuration ─────────────────────────────────────────────
+# This config tells Netlify how to build and serve the React frontend.
+# The Laravel backend must be deployed separately (e.g., Render, Railway, etc.)
+
+[build]
+  # Base directory — Netlify will cd here before running the build command
+  base = "frontend"
+  
+  # Build command — installs deps and builds the Vite project
+  command = "npm ci && npm run build"
+  
+  # Output directory (relative to base) — Vite outputs to dist/ by default
+  publish = "dist"
+
+# ─── SPA Redirects ───────────────────────────────────────────────────────────
+# React Router uses client-side routing, so all paths must serve index.html.
+# This catches every route that isn't a static file and sends it to the SPA.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ─── Security Headers ───────────────────────────────────────────────────────
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# ─── Cache Static Assets ────────────────────────────────────────────────────
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
